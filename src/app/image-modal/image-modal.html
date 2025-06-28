@@ -1,0 +1,8 @@
+<div class="modal" *ngIf="imageUrl" (click)="onClose()">
+  <div class="modal-content">
+    <img [src]="imageUrl" alt="Preview" />
+    <div class="cursor-follow-text" [ngStyle]="{ top: cursorY + 'px', left: cursorX + 'px' }">
+        Click anywhere to close
+    </div>
+  </div>
+</div>

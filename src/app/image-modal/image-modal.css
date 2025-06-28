@@ -1,0 +1,33 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.cursor-follow-text {
+  position: fixed;
+  pointer-events: none;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: top 0.05s ease, left 0.05s ease;
+  font-family: 'Segoe UI', sans-serif;
+}

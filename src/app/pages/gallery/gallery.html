@@ -1,0 +1,36 @@
+<div class="gallery-page">
+    <h2>Our Moments📸</h2>
+
+    <!-- <div class="gallery">
+        <img class="card" *ngFor="let image of images" [src]="image" alt="Memory" (click)="openPreview(image)"/>
+    </div> -->
+
+    <!-- <div class="gallery">
+        <div class="card" *ngFor="let image of images" (click)="openPreview(image)">
+            <img [src]="image" alt="Memory" />
+        </div>
+    </div> -->
+
+    <div class="gallery-container">
+        <div class="gallery-flex">
+            <div class="photo-card" *ngFor="let img of images" (click)="openPreview(img)">
+                <img [src]="img" alt="Memory" />
+                <div class="hover-text">Click on me</div>
+            </div>
+        </div>
+    </div>
+
+
+    <app-image-modal 
+        [imageUrl]="selectedImage" 
+        (close)="closePreview()">
+    </app-image-modal>
+
+
+    <form (ngSubmit)="onFileSelected($event)" class="image-form">
+        <input type="file" accept="image/*" (change)="handleFileInput($event)" required />
+        <button type="submit">Add photo</button>
+    </form> 
+
+    <button (click)="clearImages()" class="clear-btn">Clear All</button>
+</div>
