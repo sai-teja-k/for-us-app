@@ -1,13 +1,12 @@
 <div class="quote-box">
     <p>Thoughts put into words 💌</p>
-<br>
+<br><br><br>
     <h1 *ngIf="quote && quote.trim().length > 0; else fallback">“{{ quote }}”</h1>
 
     <ng-template #fallback>
     <p>“Hold on babe, still writing…”</p>
     </ng-template>
 
-<br>
-<br>
+<br><br><br>
     <p>Refresh the page/Click on this page tab again for more lines 😉</p>
 </div>
