@@ -23,7 +23,17 @@ export class GalleryComponent {
   // }
 
   ngOnInit(): void {
+
+    // this.photoService.getImages().subscribe(imgs => {
+    //   this.images = imgs;
+    // })
+
     this.images = this.photoService.getPhotos();
+    
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('key', 'value');
+    }
+    
     const stored = localStorage.getItem('photoGalleryImages');
     if (stored) {
       this.images = JSON.parse(stored);

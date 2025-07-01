@@ -1,24 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { QuoteService } from '../../services/quote';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-quotes',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './quotes.html',
-  styleUrl: './quotes.css'
+  styleUrls: ['./quotes.css']
 })
 
 export class QuotesComponent implements OnInit {
   quote: string = '';
 
-  private quotes = [
-    'You make my pupils dilate every time I see you.',
-    'Every moment with you is a page in my favorite story.',
-    'Your smile is my daily dose of sunshine.',
-    'In a world full of noise, you are my calm.'
-  ];
+  constructor(
+    private quoteService: QuoteService,
+    private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    const randomIndex = Math.floor(Math.random()*this.quotes.length);
-    this.quote = this.quotes[randomIndex];
+
+      this.quoteService.getQuotes().subscribe((quoteData) => {
+      // console.log('Quotes loaded:', quoteData)
+      // const randomIndex = Math.floor(Math.random() * quoteData.length);
+      // console.log('Random index:', randomIndex);
+      // this.quote = quoteData[randomIndex];
+      // console.log('Selected quote:', this.quote);
+
+      if (Array.isArray(quoteData) && quoteData.length > 0) {
+        const randomIndex = Math.floor(Math.random() * quoteData.length);
+        this.quote = quoteData[randomIndex];
+        console.log('Type of quote:', typeof this.quote);
+        console.log('Selected quote:', this.quote);
+      } else {
+        this.quote = 'Hold on babe, Writing more lines for you...';
+      }
+
+      this.cdr.detectChanges();
+    });
   }
 }

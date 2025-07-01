@@ -23,3 +23,22 @@ export class PhotoService {
     return this.photosPath;
   }
 }
+
+// import { Injectable } from '@angular/core';
+// import { HttpClient } from '@angular/common/http';
+// import { Observable, map } from 'rxjs';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class PhotoService {
+//   private imagesUrl = 'assets/images.json';
+
+//   constructor(private http: HttpClient) {}
+
+//   getImages(): Observable<string[]> {
+//     return this.http.get<string[]>(this.imagesUrl).pipe(
+//       map(files => files.map(name => `assets/images/${name}`))
+//     );
+//   }
+// }
